@@ -1,0 +1,51 @@
+.Work {
+	padding: 100px 0;
+	background-color: white;
+	overflow-y: scroll;
+	.work-container{
+		top: 20px;
+		position: relative;
+		margin: 0 auto;
+		display: block;
+		width: 670px;
+		padding: 0 25px;
+		opacity: 0;
+		@media(max-width:670px){
+			width: 300px;
+			padding: 0;
+		}
+	}
+	.Nav{
+		width: 610px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		margin: auto;
+		@media(max-width:670px){
+			width: 290px;
+			padding: 0;
+			.logo{
+				height: 22%;	
+			}			
+		}
+		.logo{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.menu{
+			float: right;
+		    height: 100px;
+		    line-height: 100px;
+			> div{
+				float: left;
+				margin-right: 25px;
+				&.work{
+					display: none;
+				}
+			}
+		}
+	}
+}

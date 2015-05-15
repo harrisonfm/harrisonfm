@@ -1,0 +1,75 @@
+.About {
+	padding: 100px 0;
+	background-color: white;
+	.about-container{
+		margin: 0 auto;
+		margin-bottom: 25px;
+		display: block;
+		width: 670px;
+		padding: 0 25px;
+		opacity: 0;
+		img{
+			opacity: 0;
+			width: 150px;
+			border-radius: 50%;
+			margin-right: 25px;
+			float: left;
+		}
+		footer{
+			opacity: 0;
+			text-align: center;
+			a{
+				transition: color 0.5s ease;
+			}
+		}
+		@media(max-width:670px){
+			width: 300px;
+			padding: 0;
+			img{
+				width: 125px;
+				margin-bottom: 10px;
+			}
+			p{
+				font-size: 14px;
+			}
+			footer{
+				width: 90px;
+				font-size: 20px;
+				margin: auto;
+				line-height: 35px;
+			}
+		}
+	}
+	.Nav{
+		width: 610px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		margin: auto;
+		@media(max-width:670px){
+			width: 290px;
+			.logo{
+				height: 22%;	
+			}
+		}
+		.logo{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		.menu{
+			float: right;
+		    height: 100px;
+		    line-height: 100px;
+			> div{
+				float: left;
+				margin-right: 25px;
+				&.about{
+					display: none;
+				}
+			}
+		}
+	}
+}

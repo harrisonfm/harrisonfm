@@ -1,0 +1,128 @@
+@import "base";
+@import "views/Intro";
+@import "views/Work";
+@import "views/Job";
+@import "views/Gallery";
+@import "views/Photo";
+@import "views/Thumb";
+@import "views/Nav";
+@import "views/About";
+@import "views/Loader";
+
+/* ----------------------------------------------------------------------------- *\
+   RESETS
+\* ----------------------------------------------------------------------------- */
+
+button,
+input,
+select {
+    color: $component-text-color;
+}
+
+::-moz-selection,
+::selection {
+    background: $selection-bg-color;
+    text-shadow: none;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    color: $component-text-color;
+    resize: vertical;
+}
+
+/* ----------------------------------------------------------------------------- *\
+   UTILITIES
+\* ----------------------------------------------------------------------------- */
+
+%clearfix {
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+%ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 150%;
+    }
+}
+
+.clearfix {
+    @extend %clearfix;
+}
+
+.ir {
+    @extend %ir;
+}
+
+/* ----------------------------------------------------------------------------- *\
+   GLOBAL LAYOUT
+\* ----------------------------------------------------------------------------- */
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    font: $body-font;
+    color: $body-font-color;
+    line-height: 1.5;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.current-view {
+    z-index: 100;
+}
+
+/* ----------------------------------------------------------------------------- *\
+   GLOBAL TYPOGRAPHY
+\* ----------------------------------------------------------------------------- */
+
+%a-shared {
+    text-decoration: none;
+    color: $link-color;
+}
+
+a {
+    @extend %a-shared;
+
+    &:visited {
+        @extend %a-shared;
+    }
+
+    &:hover,
+    &:active {
+        color: $link-hover-color;
+    }
+}

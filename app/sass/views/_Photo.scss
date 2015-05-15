@@ -1,0 +1,73 @@
+$span-size: 48px;
+.Photo {
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	&.show{
+		opacity: 1;
+	}
+	img{
+		max-width: 100%;
+		max-height: 100%;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 0;
+	}
+	#overlay{
+		cursor: pointer;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 1;
+		color: rgba(255,255,255,0);
+		&:hover{
+			> div > span{
+				color: rgba(255,255,255,0.25);	
+			}			
+		}
+		> div{
+			position: relative;
+			height: 100%;
+			float: left;
+			&:hover{
+				> span{
+					color: rgba(255,255,255,1);	
+				}				
+			}
+			> span {
+				position: absolute;
+				top: 50%;
+				margin-top: (-$span-size);
+				font-size: $span-size;
+				font-family: "Palatino", Helvetica, Arial, sans-serif;
+				transition: color 0.5s ease;
+			}
+			&.prev{
+				width: 40%;
+				> span{
+					left: 10px;
+				}
+			}
+			&.return{
+				width: 20%;
+				> span{
+					left: 0;
+					right: 0;
+					top: 0;
+					margin-top: 0;
+				}
+			}
+			&.next{
+				width: 40%;
+				> span{
+					right: 10px;
+				}
+			}
+		}
+	}
+}

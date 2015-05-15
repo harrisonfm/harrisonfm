@@ -1,0 +1,19 @@
+/* ----------------------------------------------------------------------------- *\
+   DEFAULTS
+\* ----------------------------------------------------------------------------- */
+
+$component-text-color: #222;
+$selection-bg-color: #b3d4fc;
+$body-font: normal 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-font-color: #000;
+$link-color: #777;
+$link-hover-color: #000;
+
+/* ----------------------------------------------------------------------------- *\
+   MIXINS
+\* ----------------------------------------------------------------------------- */
+
+@import "normalize";
+
+@import "mixins/rem";
+@import "mixins/opacity";

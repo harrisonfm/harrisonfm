@@ -1,0 +1,30 @@
+.Loader {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: white;
+	z-index: 1;
+	text-align: center;
+	.center{
+		width: 300px;
+		display: inline-block;
+		margin-top: 25%;
+	}
+	#progress{
+		position: relative;
+		height: 40px;
+		border: solid #CCC 2px;
+		border-radius: 5px;
+		background-color: white;
+		overflow: hidden;
+		.bar{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			background-color: #A0A0A0;
+		}
+	}
+}

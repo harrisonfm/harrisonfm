@@ -1,0 +1,52 @@
+.Job {
+	float: left;
+	max-width: 300px;
+	margin: 5px;
+	position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: solid 2px grey;
+	opacity: 0;
+	.title{
+		position: absolute;
+		width: 100%;
+		top: 33%;
+		text-align: center;
+		z-index: 1;
+		> div{
+			display: inline-block;
+			padding: 10px 15px;
+			font-size: 28px;
+			line-height: 30px;
+			border: solid white 2px;
+			color: white;
+			font-family: "Palatino Linotype";
+			background-color:rgba(0,0,0,.3);
+			transition: background-color 0.5s ease;
+		}
+	}
+	img{
+		width: 100%;
+	}
+	.info{
+		position: absolute;
+	  	width: 100%;
+	  	height: 40px;
+	  	line-height: 40px;
+	  	padding: 0 5px;
+		font-size: 13px;
+		background-color: rgba(0,0,0,.3);
+		z-index: 2;
+	  	top: 80%;
+	  	color: white;
+		box-sizing: border-box;
+		border-top: solid 2px grey;
+		transition: background-color 0.5s ease;
+	}
+	&:hover{
+		.title > div, .info{
+			background-color:rgba(0,0,0,.7);
+		}
+	}
+
+}

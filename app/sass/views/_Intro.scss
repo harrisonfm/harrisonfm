@@ -1,0 +1,52 @@
+@mixin center{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.Intro {
+	background-color: white;
+	.logo{
+		opacity: 0;
+		max-width: 90%;
+		z-index: 2;
+		@include center;
+	}
+	.bg{
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	.Nav{
+		@include center;
+		opacity: 0;
+		z-index: 1;
+		width: 100%;
+		.logo{
+			display: none;
+		}
+		.menu{
+			width: 300px;
+			margin: auto;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 67%;
+			text-align: center;
+			> div{
+				cursor: pointer;
+				color: white;
+				font-size: 28px;
+				font-family: "Palatino Linotype";
+				display: inline-block;
+				margin: 0 10px;
+			}
+		}
+	}
+}

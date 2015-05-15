@@ -1,0 +1,11 @@
+node_modules
+dist
+test/temp
+.sass-cache
+app/js/libs/bower
+app/jade
+.tmp
+test/bower_components/
+npm-debug.log
+hfmapi
+!hfmapi/wp-content/plugins
