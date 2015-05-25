@@ -78,8 +78,11 @@
 			footer{
 				display: none;
 			}
-			.Nav .menu{
-				height: 30px;
+			.Nav {
+				width: 175px;
+				.menu{
+					height: 30px;
+				}
 			}
 			ul{
 				display: none;

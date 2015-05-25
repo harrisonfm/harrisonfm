@@ -19,6 +19,9 @@ define([
         else{
             Backbone.api = 'http://harrisonfm.com/api/';
         }
+        if(document.documentElement.className.indexOf('lt-ie9') !== -1){
+            alert('You are using an unsupported browser. Please check http://browsehappy.com for some modern options you can update to. The site may not work properly otherwise.');
+        }
         Router.initialize();
     };
 

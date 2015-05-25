@@ -1,4 +1,4 @@
-$span-size: 48px;
+$span-size: 75px;
 .Photo {
 	position: relative;
 	display: inline-block;
@@ -27,7 +27,7 @@ $span-size: 48px;
 		color: rgba(255,255,255,0);
 		&:hover{
 			> div > span{
-				color: rgba(255,255,255,0.25);	
+				color: rgba(255,255,255,0.5);	
 			}			
 		}
 		> div{
@@ -36,7 +36,7 @@ $span-size: 48px;
 			float: left;
 			&:hover{
 				> span{
-					color: rgba(255,255,255,1);	
+					color: rgba(255,255,255,1);
 				}				
 			}
 			> span {

@@ -4,6 +4,7 @@ test/temp
 .sass-cache
 app/js/libs/bower
 app/jade
+app/css
 .tmp
 test/bower_components/
 npm-debug.log
