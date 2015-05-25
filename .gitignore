@@ -7,5 +7,12 @@ app/jade
 .tmp
 test/bower_components/
 npm-debug.log
-hfmapi
-!hfmapi/wp-content/plugins
+
+hfmapi/*
+!hfmapi/wp-content/
+
+hfmapi/wp-content/*
+!hfmapi/wp-content/plugins/
+
+hfmapi/wp-content/plugins/*
+!hfmapi/wp-content/plugins/internal.php
