@@ -6,6 +6,7 @@ define([
     'templates',
     'views/Job',
     'views/Nav',
+    'views/Loader',
     'tweenmax',
     'models/Job',
     'collections/Job',
@@ -16,6 +17,7 @@ define([
     JST,
     JobView,
     NavView,
+    LoaderView,
     TweenMax,
     Job,
     Jobs) {
@@ -41,9 +43,11 @@ define([
         initialize: function(opts) {
             PageView.prototype.initialize.apply(this, arguments);
             this.navView = new NavView();
+            this.loaderView = new LoaderView();
             this.getJobs();
-            _.bindAll(this, 'appendJob');
+            _.bindAll(this, 'appendJob', 'loadingDone');
             Backbone.pubSub.on('appendJob', this.appendJob);
+            Backbone.pubSub.on('loadingDone', this.loadingDone);
         },
 
         /**
@@ -55,7 +59,7 @@ define([
             this.$el.html(this.template());
             this.cacheSelectors();
             this.$el.prepend(this.navView.render().el);
-            this.appendJob();
+            this.$el.prepend(this.loaderView.render().el);
             return this;
         },
 
@@ -64,45 +68,15 @@ define([
         },
 
         getJobs: function() {
-            var jobArr = [
-                new Job({
-                    title: 'PB Art',
-                    thumb: 'pbart.png',
-                    desc: '2015, Frontend, Backbone',
-                    url: 'http://www.peanutbutter.com/yippee/skippyart/'
-                }),
-                new Job({
-                    title: 'Neat Beet',
-                    thumb: 'neatbeet.png',
-                    desc: '2014, Design, Development',
-                    url: 'http://neatbeet.com'
-                }),
-                new Job({
-                    title: 'Spotify Artists',
-                    thumb: 'spotify.png',
-                    desc: '2014, Backend, Wordpress',
-                    url: 'http://spotifyartists.com'
-                }),
-                new Job({
-                    title: 'Mandela Moments',
-                    thumb: 'mandela.png',
-                    desc: '2013, Backend, PHP/Imagemagick',
-                    url: 'http://mandelafilm.com/moments'
-                }),
-                new Job({
-                    title: 'Frame to Fame',
-                    thumb: 'mofam.png',
-                    desc: '2013, Backend, PHP/Imagemagick',
-                    url: 'www.usanetwork.com/modernfamily/frametofame'
-                }),
-                new Job({
-                    title: 'Mad Men Motto',
-                    thumb: 'madmen.png',
-                    desc: '2013, Backend, PHP/JS',
-                    url: 'http://www.amctv.com/framed-games/madmenmotto/tab.php'
-                }),
-            ];
-            this.collection = new Jobs(jobArr);
+            this.collection = new Jobs();
+            this.collection.fetch({
+                data: {
+                    json: 'get_page',
+                    slug: 'work'
+                }
+            }).done(function(){
+                this.loaderView.startLoad(0);
+            }.bind(this));
         },
 
         appendJob: function() {
@@ -116,9 +90,13 @@ define([
             this.workContainer.append(jobView.render().el);
         },
 
-        doneTransitioning: function(){
+        loadingDone: function(){
             var objects = [this.navView.el, this.$('.work-container')[0]];
-            TweenMax.to(objects, 0.4, {opacity: 1});
+            TweenMax.to(objects, 0.4, {
+                opacity: 1,  
+                onComplete: this.appendJob,
+                onCompleteScope: this
+            });
         },
 
         clean: function(){

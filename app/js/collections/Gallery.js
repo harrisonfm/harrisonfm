@@ -46,10 +46,9 @@ define([
                 content = response.posts[i].content;
                 desc = this.getSubStr(content, '<p>', '</p>');
                 galleries = content.split('src="');
-                for(var j = 1; j < galleries.length; j++){
+                for(var j = 1, max = galleries.length; j < max; j++){
                     src = galleries[j].substr(0,galleries[j].indexOf("\""));
                     alt = this.getSubStr(galleries[j], 'alt="', '"');
-                    console.log(src, alt);
                     photos.push(new Photo({
                         title: alt,
                         slug: alt.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,''),

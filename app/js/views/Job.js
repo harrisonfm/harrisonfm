@@ -50,7 +50,7 @@ define([
 
         reveal: function() {
             this.blur();
-            TweenMax.to(this.el, 0.5, {opacity: 1, onComplete: this.nextJob});
+            TweenMax.to(this.el, 0.4, {opacity: 1, onComplete: this.nextJob});
         },
 
         nextJob: function() {            
