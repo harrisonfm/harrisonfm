@@ -45,8 +45,7 @@ define([
         @return {AboutView}
         **/
         render: function() {
-            this.$el.prepend(this.navView.render().el);
-            this.$el.append(this.loaderView.render().el);
+            this.$el.prepend([this.navView.render().el, this.loaderView.render().el]);
             return this;
         },
 

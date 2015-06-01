@@ -27,7 +27,6 @@ define([
     var WorkView = PageView.extend({
         className: 'Work page',
         template: JST['app/js/templates/Work.ejs'],
-        index: 0,
 
         events: {},
 
@@ -58,8 +57,7 @@ define([
         render: function() {
             this.$el.html(this.template());
             this.cacheSelectors();
-            this.$el.prepend(this.navView.render().el);
-            this.$el.prepend(this.loaderView.render().el);
+            this.$el.prepend([this.navView.render().el, this.loaderView.render().el]);
             return this;
         },
 
@@ -75,26 +73,34 @@ define([
                     slug: 'work'
                 }
             }).done(function(){
-                this.loaderView.startLoad(0);
+                this.loaderView.startLoad(this.collection.length);
+                this.collection.each(this.appendJob, this);
             }.bind(this));
         },
 
-        appendJob: function() {
-            if(!this.collection.at(this.index)){
-                return;
-            }
+        appendJob: function(element) {
             var jobView = new JobView({
-                model : this.collection.at(this.index)
+                model : element,
+                attributes: {
+                    href: element.get('url'),
+                    target: '_blank'
+                }
             });
-            this.index++;
             this.workContainer.append(jobView.render().el);
+            jobView.$('img').on('load', function(){
+                this.loaderView.increment();
+            }.bind(this));
+        },
+
+        revealJobs: function(){
+            TweenMax.staggerTo(this.$('.Job'), 0.4, {opacity: 1}, 0.4);
         },
 
         loadingDone: function(){
-            var objects = [this.navView.el, this.$('.work-container')[0]];
+            var objects = [this.navView.el, this.$('.work-container')];
             TweenMax.to(objects, 0.4, {
                 opacity: 1,  
-                onComplete: this.appendJob,
+                onComplete: this.revealJobs,
                 onCompleteScope: this
             });
         },

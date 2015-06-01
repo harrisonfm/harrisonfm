@@ -38,8 +38,7 @@ define([
             content,
             src,
             alt,
-            desc,
-            orientation;
+            desc;
 
             for(var i = 0; i < response.posts.length; i++){
                 photos = [];

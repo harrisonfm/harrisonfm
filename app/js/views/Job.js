@@ -16,12 +16,8 @@ define([
     'use strict';
 
     var JobView = AbstractView.extend({
-        className: 'Job',
+        tagName: 'a',
         template: JST['app/js/templates/Job.ejs'],
-
-        events: {
-            'click': 'openJob',
-        },
 
         /* ----------------------------------------------------------------------------- *\
            Public Methods
@@ -34,7 +30,6 @@ define([
         **/
         initialize: function(opts) {
             AbstractView.prototype.initialize.apply(this, arguments);
-            _.bindAll(this, 'reveal', 'blur');
         },
 
         /**
@@ -44,17 +39,8 @@ define([
         **/
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
-            this.$('img').load(this.reveal);
-            return this;
-        },
-
-        reveal: function() {
             this.blur();
-            TweenMax.to(this.el, 0.4, {opacity: 1, onComplete: this.nextJob});
-        },
-
-        nextJob: function() {            
-            Backbone.pubSub.trigger('appendJob');
+            return this;
         },
 
         blur: function(){
@@ -62,10 +48,6 @@ define([
                 intensity: 1
             });
             vague.blur();
-        },
-
-        openJob: function() {
-            window.location = this.model.get('url');
         }
     });
 

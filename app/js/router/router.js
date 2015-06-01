@@ -20,9 +20,9 @@ define([
 
     'use strict';
 
-    var newView = null,
-        currentView = null,
-        formerView = null,
+    var newView,
+        currentView,
+        formerView,
         firstView = true,
         galleryView,
         galleryModel = new Gallery(),

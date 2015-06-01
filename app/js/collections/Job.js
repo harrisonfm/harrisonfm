@@ -29,7 +29,6 @@ define([
                     url: jobCaption[2]
                 }));
             }
-            console.log(parsed[0].toJSON());
             return parsed;
         }
     });

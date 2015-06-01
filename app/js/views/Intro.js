@@ -58,14 +58,13 @@ define([
         **/
         render: function() {
             this.$el.html(this.template());
-            this.$el.append(this.loaderView.render().el);
-            this.$el.append(this.navView.render().el);
+            this.$el.append([this.loaderView.render().el, this.navView.render().el]);
             this.bg = this.$('.bg');
             return this;
         },
 
         loadingDone: function() {
-            var objects = [this.bg[0], this.$('.logo')[0], this.$('.Nav')[0]];
+            var objects = [this.bg, this.$('.logo'), this.$('.Nav')];
             TweenMax.staggerTo(objects, 0.8, {opacity: 1, delay: 0.2, onStart: this.startReveal}, 0.8);
         }
     });

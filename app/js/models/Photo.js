@@ -8,7 +8,7 @@ define([
 
     var PhotoModel = Backbone.Model.extend({
         defaults: {
-			title: '',
+            title: '',
             slug: '',
             url: '',
             thumb: ''
