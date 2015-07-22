@@ -38,6 +38,22 @@ define([
             _.bindAll(this, 'loadingDone');
             this.navView = new NavView();
             this.loaderView = new LoaderView();
+            Backbone.pubSub.on('loadingDone', this.loadingDone);
+            this.getBackground();
+        },
+
+        /**
+        @method render
+
+        @return {IntroView}
+        **/
+        render: function() {
+            this.$el.append([this.template(), this.loaderView.render().el, this.navView.render().el]);
+            this.bg = this.$('.bg');
+            return this;
+        },
+
+        getBackground: function() {
             $.getJSON(Backbone.api, {
                 json: 'get_page',
                 slug: 'intro'
@@ -48,19 +64,6 @@ define([
                 this.preload = $('<img src="'+url+'" />');
                 this.preload.on('load', this.loaderView.increment);
             }.bind(this));
-            Backbone.pubSub.on('loadingDone', this.loadingDone);
-        },
-
-        /**
-        @method render
-
-        @return {IntroView}
-        **/
-        render: function() {
-            this.$el.html(this.template());
-            this.$el.append([this.loaderView.render().el, this.navView.render().el]);
-            this.bg = this.$('.bg');
-            return this;
         },
 
         loadingDone: function() {

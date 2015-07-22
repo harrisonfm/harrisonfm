@@ -45,7 +45,6 @@ define([
             this.loaderView = new LoaderView();
             this.getJobs();
             _.bindAll(this, 'appendJob', 'loadingDone');
-            Backbone.pubSub.on('appendJob', this.appendJob);
             Backbone.pubSub.on('loadingDone', this.loadingDone);
         },
 
@@ -55,9 +54,8 @@ define([
         @return {WorkView}
         **/
         render: function() {
-            this.$el.html(this.template());
+            this.$el.append([this.template(), this.navView.render().el, this.loaderView.render().el]);
             this.cacheSelectors();
-            this.$el.prepend([this.navView.render().el, this.loaderView.render().el]);
             return this;
         },
 
@@ -87,9 +85,7 @@ define([
                 }
             });
             this.workContainer.append(jobView.render().el);
-            jobView.$('img').on('load', function(){
-                this.loaderView.increment();
-            }.bind(this));
+            jobView.$('img').on('load', this.loaderView.increment);
         },
 
         revealJobs: function(){

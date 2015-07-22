@@ -4,14 +4,12 @@ define([
     'backbone',
     'views/abstract',
     'templates',
-    'tweenmax',
     'vague'
 ], function($,
     _,
     Backbone,
     AbstractView,
-    JST,
-    TweenMax) {
+    JST) {
 
     'use strict';
 
