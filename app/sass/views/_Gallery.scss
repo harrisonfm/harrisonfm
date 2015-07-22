@@ -136,11 +136,9 @@
 			margin-left: 200px;
 		}
 		#thumbnails{
-			overflow: auto;
 			display: inline-block;
 			z-index: 2;
 			padding: 10px 0;
-			-webkit-tap-highlight-color: transparent;
 			@media(min-width: 821px){
 				@include columnLayout(3, 300px, 5px);
 			}
