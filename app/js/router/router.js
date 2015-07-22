@@ -46,15 +46,7 @@ define([
         router.on('route:about', about);
         router.on('route:gallery', gallery);
 
-        var opts = {};
-
-        if(Backbone.isDev !== true){
-            opts = {
-                pushState: true
-            };
-        }
-
-        if(!Backbone.history.start(opts)){
+        if(!Backbone.history.start({pushState: true})){
             intro();
         }
     },

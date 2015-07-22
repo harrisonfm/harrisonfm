@@ -139,17 +139,10 @@ define([
             var categoryView,
             opts = {
                 model: element,
-                id: element.get('slug'),
+                id: element.get('slug')
             };
-            if(element.get('parent')){
-                this.galleryList.find('#'+element.get('parent')).addClass('parent');
-                categoryView = new CategoryView(opts);
-                this.galleryList.find('#'+element.get('parent')+'> ul').append(categoryView.render().el);
-            }
-            else{
-                categoryView = new CategoryView(opts);
-                this.galleryList.append(categoryView.render().el);
-            }
+            categoryView = new CategoryView(opts);
+            this.galleryList.append(categoryView.render().el);
         },
 
         addAllThumbnails: function() {
@@ -230,7 +223,7 @@ define([
 
         toThumbs: function(){
             this.controls.hide();
-            this.slides.empty();
+            this.slides.empty().height(0);
             this.thumbnails.fadeIn();
             if(this.photoView){
                 this.photoView.clean();

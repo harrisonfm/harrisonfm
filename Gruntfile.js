@@ -5,7 +5,7 @@ var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
-var rewrite = require('connect-modrewrite');
+var pushState = require('connect-pushstate');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -73,6 +73,16 @@ module.exports = function (grunt) {
                 port: SERVER_PORT,
                 // change this to '0.0.0.0' to access the server from outside
                 hostname: '*',
+                base: '.',
+                middleware: function (connect, options) {
+                  return [
+                    // Rewrite requests to root so they may be handled by router 
+                    pushState(),
+             
+                    // Serve static files 
+                    connect.static(options.base)
+                  ];
+                }
             },
             livereload: {
                 options: {

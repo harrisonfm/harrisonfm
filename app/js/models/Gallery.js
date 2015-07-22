@@ -14,8 +14,7 @@ define([
 			slug: '',
 			photo: false,
 			photos: null,
-			desc: '',
-			parent: null
+			desc: ''
         }
     });
 

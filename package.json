@@ -1,7 +1,9 @@
 {
   "name": "hfm2",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "connect-pushstate": "^1.0.0"
+  },
   "devDependencies": {
     "connect-livereload": "~0.3.0",
     "connect-modrewrite": "^0.7.11",
