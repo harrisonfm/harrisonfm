@@ -110,7 +110,6 @@ define([
                 default:
                     console.log('wrong transition');
             }
-            console.log('transitioned '+direction);
             TweenMax.to(this.el, 0.7, css);
         },
 
@@ -121,9 +120,19 @@ define([
             this.clean();
         },
 
-
         doneTransitioning: function() {
-            console.log('ready');
+        },
+
+        setMetaTags: function(title, description, image) {
+            $('meta[property="og:title"]').remove();
+            $('head').append( '<meta name="og:title" content="'+title+'">' );
+            document.title = title;
+
+            $('meta[property="og:description"]').remove();
+            $('head').append( '<meta name="og:description" content="'+description+'">' );
+
+            $('meta[property="og:image"]').remove();
+            $('head').append( '<meta name="og:image" content="'+image+'">' );
         },
 
         /**

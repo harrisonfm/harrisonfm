@@ -223,7 +223,7 @@ define([
 
         toThumbs: function(){
             this.controls.hide();
-            this.slides.empty();
+            this.slides.empty().height(0);
             this.thumbnails.fadeIn();
             if(this.photoView){
                 this.photoView.clean();
