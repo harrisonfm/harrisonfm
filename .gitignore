@@ -6,6 +6,7 @@ app/js/libs/bower
 app/jade
 app/css
 .tmp
+.DS_Store
 test/bower_components/
 npm-debug.log
 
